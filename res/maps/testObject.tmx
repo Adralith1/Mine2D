@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="25" tileheight="25" infinite="0" nextobjectid="127">
+ <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="Blocs.png" width="150" height="75"/>
+ </tileset>
+ <tileset firstgid="9" source="Blocs.tsx"/>
+ <tileset firstgid="27" source="background.tsx"/>
+ <objectgroup name="background">
+  <object id="65" gid="27" x="0" y="450" width="1000" height="450"/>
+ </objectgroup>
+ <objectgroup name="dirt">
+  <object id="2" x="97" y="143" height="1"/>
+  <object id="10" gid="10" x="25" y="450" width="25" height="25"/>
+  <object id="11" gid="10" x="25" y="450" width="25" height="25"/>
+  <object id="12" gid="10" x="50" y="425" width="25" height="25"/>
+  <object id="14" gid="10" x="50" y="450" width="25" height="25"/>
+  <object id="15" gid="10" x="75" y="425" width="25" height="25"/>
+  <object id="16" gid="10" x="75" y="450" width="25" height="25"/>
+  <object id="17" gid="10" x="75" y="400" width="25" height="25"/>
+  <object id="18" gid="10" x="100" y="400" width="25" height="25"/>
+  <object id="19" gid="10" x="100" y="425" width="25" height="25"/>
+  <object id="20" gid="10" x="100" y="450" width="25" height="25"/>
+  <object id="68" gid="10" x="175" y="425" width="25" height="25"/>
+  <object id="69" gid="10" x="175" y="450" width="25" height="25"/>
+  <object id="70" gid="10" x="150" y="450" width="25" height="25"/>
+  <object id="71" gid="10" x="200" y="450" width="25" height="25"/>
+  <object id="72" gid="10" x="200" y="400" width="25" height="25"/>
+  <object id="73" gid="10" x="200" y="375" width="25" height="25"/>
+  <object id="74" gid="10" x="225" y="375" width="25" height="25"/>
+  <object id="75" gid="10" x="225" y="400" width="25" height="25"/>
+  <object id="76" gid="10" x="200" y="425" width="25" height="25"/>
+ </objectgroup>
+ <objectgroup name="sky1" visible="0" offsetx="-4" offsety="0">
+  <object id="32" gid="24" x="0" y="25" width="1000" height="25"/>
+  <object id="63" gid="24" x="1" y="250" width="1000" height="225"/>
+  <object id="64" gid="25" x="0" y="350" width="1000" height="100"/>
+ </objectgroup>
+ <objectgroup name="sky2" visible="0"/>
+ <objectgroup name="stone">
+  <object id="21" gid="11" x="125" y="400" width="25" height="25"/>
+  <object id="22" gid="11" x="125" y="425" width="25" height="25"/>
+  <object id="23" gid="11" x="125" y="450" width="25" height="25"/>
+  <object id="24" gid="11" x="150" y="400" width="25" height="25"/>
+  <object id="25" gid="11" x="175" y="400" width="25" height="25"/>
+  <object id="26" gid="11" x="175" y="375" width="25" height="25"/>
+  <object id="27" gid="11" x="150" y="425" width="25" height="25"/>
+  <object id="77" gid="11" x="250" y="375" width="25" height="25"/>
+  <object id="78" gid="11" x="275" y="375" width="25" height="25"/>
+  <object id="79" gid="11" x="275" y="400" width="25" height="25"/>
+  <object id="80" gid="11" x="250" y="425" width="25" height="25"/>
+  <object id="81" gid="11" x="250" y="450" width="25" height="25"/>
+  <object id="82" gid="11" x="275" y="350" width="25" height="25"/>
+  <object id="83" gid="11" x="250" y="350" width="25" height="25"/>
+  <object id="84" gid="11" x="276" y="325" width="25" height="25"/>
+  <object id="85" gid="11" x="300" y="325" width="25" height="25"/>
+  <object id="86" gid="11" x="325" y="350" width="25" height="25"/>
+  <object id="87" gid="11" x="350" y="375" width="25" height="25"/>
+  <object id="88" gid="11" x="325" y="375" width="25" height="25"/>
+  <object id="89" gid="11" x="300" y="350" width="25" height="25"/>
+  <object id="90" gid="11" x="300" y="375" width="25" height="25"/>
+  <object id="91" gid="11" x="250" y="400" width="25" height="25"/>
+  <object id="92" gid="11" x="225" y="425" width="25" height="25"/>
+  <object id="93" gid="11" x="225" y="450" width="25" height="25"/>
+  <object id="94" gid="11" x="300" y="400" width="25" height="25"/>
+  <object id="95" gid="11" x="300" y="425" width="25" height="25"/>
+  <object id="96" gid="11" x="275" y="425" width="25" height="25"/>
+  <object id="97" gid="11" x="275" y="450" width="25" height="25"/>
+  <object id="98" gid="11" x="300" y="450" width="25" height="25"/>
+  <object id="99" gid="11" x="325" y="450" width="25" height="25"/>
+  <object id="100" gid="11" x="325" y="425" width="25" height="25"/>
+  <object id="101" gid="11" x="325" y="400" width="25" height="25"/>
+  <object id="102" gid="11" x="350" y="400" width="25" height="25"/>
+  <object id="103" gid="11" x="350" y="425" width="25" height="25"/>
+  <object id="104" gid="11" x="350" y="450" width="25" height="25"/>
+  <object id="106" gid="11" x="375" y="375" width="25" height="25"/>
+  <object id="107" gid="11" x="375" y="400" width="25" height="25"/>
+  <object id="108" gid="11" x="375" y="425" width="25" height="25"/>
+  <object id="109" gid="11" x="375" y="450" width="25" height="25"/>
+  <object id="110" gid="11" x="400" y="450" width="25" height="25"/>
+  <object id="111" gid="11" x="400" y="425" width="25" height="25"/>
+  <object id="112" gid="11" x="400" y="400" width="25" height="25"/>
+  <object id="113" gid="11" x="400" y="375" width="25" height="25"/>
+  <object id="114" gid="11" x="425" y="375" width="25" height="25"/>
+  <object id="115" gid="11" x="425" y="400" width="25" height="25"/>
+  <object id="116" gid="11" x="425" y="425" width="25" height="25"/>
+  <object id="117" gid="11" x="425" y="450" width="25" height="25"/>
+  <object id="118" gid="11" x="450" y="450" width="25" height="25"/>
+  <object id="119" gid="11" x="450" y="425" width="25" height="25"/>
+  <object id="120" gid="11" x="450" y="400" width="25" height="25"/>
+  <object id="121" gid="11" x="450" y="375" width="25" height="25"/>
+  <object id="122" gid="11" x="475" y="375" width="25" height="25"/>
+  <object id="123" gid="11" x="475" y="400" width="25" height="25"/>
+  <object id="124" gid="11" x="475" y="425" width="25" height="25"/>
+  <object id="125" gid="11" x="475" y="450" width="25" height="25"/>
+  <object id="126" gid="11" x="225" y="350" width="25" height="25"/>
+ </objectgroup>
+ <objectgroup name="vide" visible="0">
+  <object id="28" gid="23" x="200" y="375" width="25" height="25"/>
+  <object id="29" gid="23" x="225" y="375" width="25" height="25"/>
+  <object id="30" gid="23" x="200" y="400" width="25" height="25"/>
+  <object id="31" gid="23" x="225" y="400" width="25" height="25"/>
+ </objectgroup>
+</map>
