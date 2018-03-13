@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="40" height="8" tilewidth="25" tileheight="25" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32" tilecount="3" columns="3">
+  <image source="Blocs.png" width="96" height="32"/>
+ </tileset>
+
+ <tileset firstgid="22" source="Blocs.tsx"/>
+ <layer name="dirt" width="40" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUEAvE0fBgAuhuG0xuJeS2gXInAP9rAhI=
+  </data>
+ </layer>
+ <layer name="stone" width="40" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowACJAbaAXiABBIeTEACC2ZgGDpuHWxuBAF6ug8AzN4B+Q==
+  </data>
+ </layer>
+ <layer name="vide" width="40" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU4AIqaHiwgcHsNhAYzG4DAQDBbwFF
+  </data>
+ </layer>
+</map>
