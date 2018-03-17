@@ -34,6 +34,7 @@ import entities.StoneBloc;
 import handlers.CollisionHandler;
 import handlers.Inputs;
 import entities.Character;
+import entities.Zombie;
 
 
 /**
@@ -57,6 +58,7 @@ public class Play extends Stage {
 	private float tileSize;
 	private OrthogonalTiledMapRenderer tmr;
 	private Character steve;
+	private Zombie rick;
 	public Array<Bloc> allBlocs;
 	public Array<Bloc> background;
 
@@ -69,6 +71,7 @@ public class Play extends Stage {
 		world.setContactListener(cl);
 		b2dr = new Box2DDebugRenderer();
 		createPlayer();
+		createZombie();
 		allBlocs=new Array<Bloc>();
 		background=new Array<Bloc>();
 
@@ -236,7 +239,29 @@ public class Play extends Stage {
 		body.setUserData(steve);
 		
 	}
-	
+
+	private void createZombie() { // Création du zombie et de sa hitbox
+
+		BodyDef bdef = new BodyDef();
+		FixtureDef fdef = new FixtureDef();
+		PolygonShape shape = new PolygonShape();
+
+		// create player
+		bdef.position.set(180 / PPM, 430 / PPM);
+		bdef.type = BodyType.DynamicBody;
+		bdef.linearVelocity.set(0, 0);
+		Body body = world.createBody(bdef);
+
+		shape.setAsBox(14 / PPM, 28 / PPM);
+		fdef.shape = shape;
+		body.createFixture(fdef).setUserData("zombie");
+
+		// create player
+		rick =new Zombie(body);
+		body.setUserData(rick);
+
+	}
+
 	private void createTiles() { // Récupération du fichier.tmx
 		//tileMap = new TmxMapLoader().load("res/maps/testObject.tmx");
         tileMap = new TmxMapLoader().load("core/assets/maps/testObject.tmx");
