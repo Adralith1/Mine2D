@@ -11,7 +11,7 @@ import handlers.Constantes;
 
 import java.util.HashMap;
 
-public class Character extends Entity{ // Entity défini TOUT objet dans le jeu
+public class Character extends Entity{ // Entity défini TOUT objet dans le jeu, ici on définit notre personnage
 	
 
 	public Texture left,right,idle; //le personnage a trois différentes manières d'exister
@@ -36,7 +36,7 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu
 	}
 
 
-	
+	// Définit les annimation
 	public void setAnimation(TextureRegion[] reg, float delay) {
 		animation.setFrames(reg, delay);
 		width = reg[0].getRegionWidth();
@@ -46,7 +46,8 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu
 	public void update(float dt) {
 		animation.update(dt);
 	}
-	
+
+	// Affiche le personnage
 	public void render(SpriteBatch sb) {
 		sb.begin();
 		sb.draw(

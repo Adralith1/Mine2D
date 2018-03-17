@@ -4,6 +4,12 @@ import com.badlogic.gdx.physics.box2d.*;
 
 import com.badlogic.gdx.utils.Array;
 
+/**
+ *  là on va beaucoup plus y toucher car j'ai encore un bug à corriger,
+ *  si vous voulez tester une collision entre deux trucs ça se passe ici ,
+ *  si vous voulez une explication sur des lignes de code en particulier dans cette classe n'hésitez pas,
+ *  c'est clairement la plus utile.
+ */
 public class CollisionHandler implements ContactListener {
 	
 	private int numFootContacts;
@@ -17,7 +23,8 @@ public class CollisionHandler implements ContactListener {
 
 	}
 	
-	// called when two fixtures start to collide
+	// provient de box2D, c'est une fonction automatiquement appelé lors d'un contact entre deux objet
+	// permet d'effectuer une action lors d'un conatct ici de supprimer des blocs
 	public void beginContact(Contact c) {
 		
 		Fixture fa = c.getFixtureA();
@@ -45,8 +52,12 @@ public class CollisionHandler implements ContactListener {
 		}
 		
 	}
-	
-	// called when two fixtures no longer collide
+
+	// provient de box2D, c'est une fonction automatiquement appelé lors de la fin d'un contact entre deux objet
+	// et non lorsqu'il n'y a pas de contact c'est différent.
+	// permet d'effectuer une action lors d'une fin de conatct ici de retirer le compteur de bloc à ces pieds
+	// (exemple entre le personnage et les bloc un changement de vitesse, ainsi en fin de contact lors d'un saut on
+	// obtient un effet trampoline mais on ne l'a pas une fois en l'air)
 	public void endContact(Contact c) {
 		
 		Fixture fa = c.getFixtureA();

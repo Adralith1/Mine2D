@@ -7,6 +7,11 @@ import com.badlogic.gdx.InputProcessor;
 
 import java.security.Key;
 
+/**
+ * Flo sur FB :
+ *  InputsHandler : Juste pour dire que si t'appui sur Z, bah tu génére le chiffre que tu souhaites binder,
+ *  par exemple, Z = BUTTON1 nous c'est le saut
+ */
 public class InputsHandlers extends InputAdapter implements InputProcessor{
 	// en fonction de la touche choisie on setKey pour une action
 	public boolean keyDown(int k) {

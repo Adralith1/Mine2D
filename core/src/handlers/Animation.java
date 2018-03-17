@@ -2,8 +2,17 @@ package handlers;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * Flo sur FB :
+ * Ici pareil on écrira pas grand chose de plus,
+ * en gros ça sert juste à dire que même entre deux frame tu peux te prendre un pain dans la gueule
+ * + Incrémenter les frames du personnage,
+ * en fait c'est une gestion manuelle de l'affichage des sprites.
+ */
 public class Animation {
-	
+	// Classe de définition des Animation équivalant à la Classe Sting mais ne gère pas une liste de char
+	// mais plusieur field primitif ou non.
+	// Chaque entites (perso, bloc) peut définir son animation en implémentent une instance de cette classe
 	private TextureRegion[] frames;
 	private float time;
 	private float delay;

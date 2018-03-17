@@ -1,5 +1,11 @@
 package handlers;
 
+/**
+ * Flo sur fB :
+ * Inputs : Si vous avez une commande à rajouter, ajoutez le dans cette classe,
+ * une fonctionnalité est associée à un entier, si vous rajouter par exemple "Crouch = 6 "
+ * faudra augmenter la taille du tableau NUM_KEYS de 6 à 1, car il définit la taille du tableau d'inputs
+ */
 public class Inputs {
 
 	//Classe de gestion des touches.

@@ -11,7 +11,12 @@ import handlers.Constantes;
 
 import java.util.HashMap;
 
-public class Entity {
+/**
+ * Flo sur FB :
+ *  Character descend de Entity, tous comme les blocs, faut partir du principe que
+ *  si vous ajoutez n'importe quoi, pioche, monstre, un objet ramassable, c'est une entity, donc faudra l'extends.
+ */
+public class Entity { // Classe principale pour chaque objet (ou entité) doit faire l'objet d'extends
     protected Animation animation;
     public Body body;
     protected float width;

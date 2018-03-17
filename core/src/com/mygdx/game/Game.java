@@ -10,6 +10,12 @@ import handlers.InputsHandlers;
 import handlers.TextureLoader;
 import states.Play;
 
+/**
+ * Flo sur FB :
+ * La classe servant à faire des associations de sprite à des string qu'on définira plus tard;
+ * c'est également une classe utile à l'initiation des objets "Abstraits du jeu,
+ * comme une caméra, un SpriteBatch (un gestionnaire de sprites)
+ */
 public class Game implements ApplicationListener {
 	
 	public static final String TITLE = "MINE2D";
@@ -30,6 +36,8 @@ public class Game implements ApplicationListener {
 	public static TextureLoader left;
 	
 	public void create() {
+
+		// Ajout le contrôle des touches clavier avec le jeu
 		
 		//Texture.setEnforcePotImages(false);
 		Gdx.input.setInputProcessor(new InputsHandlers());

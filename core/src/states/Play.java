@@ -36,15 +36,20 @@ import handlers.Inputs;
 import entities.Character;
 
 
-
+/**
+ * Flo sur FB : Play : TU PASSERAS FORCEMENT PAR LA
+ c'est dans cette classe là que toutes les fonctions crées dans les autres classes sont utilisées,
+ clairement quelquechose comme :
+ 	public void build() serait dans cette classe
+ 	public void crouch() serait à ajouter dans handleInput(),
+ 	tout objet à créer se créer là et se render là également 🙂
+ */
 public class Play extends Stage {
-
-
 	protected SpriteBatch sb;
 	protected OrthographicCamera cam;
 	protected Game game;
 	private boolean showBoxes = false;
-	private World world;
+	private World world; //Ajoute un monde dans lequel sont les entites
 	private Box2DDebugRenderer b2dr;
 	private OrthographicCamera b2dCam;
 	private CollisionHandler cl;
@@ -54,6 +59,8 @@ public class Play extends Stage {
 	private Character steve;
 	public Array<Bloc> allBlocs;
 	public Array<Bloc> background;
+
+	// Constructeur : ici on définit tous nos entites et notre monde dans lequel ils sont
 	public Play(Game game) {
 		sb = game.getSpriteBatch();
 		cam = game.getCamera();
@@ -194,6 +201,13 @@ public class Play extends Stage {
 	}
 	
 	public void dispose() {}
+
+	/**
+	 * Ci-dessus les methodes qui servent à définir les entites, tu peux les voirs comme un "new"
+	 * genre l'ajout d'un bloc dans le constructeur Play ne se fera pas
+	 * Bloc dirt = new Bloc(param) mais s'écrit ici createBloc(param)
+	 * Et c'est pareille avec chaque entites
+	 */
 	
 	private void createPlayer() { // Création du personnage et de sa hitbox
 		
