@@ -139,11 +139,16 @@ public class Play extends Stage {
 			}
 		}
 	}
+
+	public void handleZombie() {
+		rick.setAnimation(rick.leftReg,1/6f);
+	}
 	
 	public void update(float dt) { // Sert à prendre le nouvel état de chaque élément
 		
 		handleInput();
 		handleBuilding();
+		handleZombie();
 		world.step(dt, 6, 2);
 		if (Inputs.isPressed(Inputs.DESTROY)) {
 			Array<Body> bodies = cl.getBlocToDelete();
@@ -159,6 +164,7 @@ public class Play extends Stage {
 			steve.setAnimation(steve.idleReg,1/6f);
 		}
 		steve.update(dt);
+		rick.update(dt);
 
 		for(int i = 0; i < allBlocs.size; i++) {
 			allBlocs.get(i).update(dt);
@@ -190,6 +196,7 @@ public class Play extends Stage {
 			background.get(i).render(sb);
 		}
 		steve.render(sb);
+		rick.render(sb);
 
 		for(int i=0;i<allBlocs.size;i++)
 		{
@@ -247,14 +254,14 @@ public class Play extends Stage {
 		PolygonShape shape = new PolygonShape();
 
 		// create player
-		bdef.position.set(180 / PPM, 430 / PPM);
+		bdef.position.set(480 / PPM, 430 / PPM);
 		bdef.type = BodyType.DynamicBody;
-		bdef.linearVelocity.set(0, 0);
+		bdef.linearVelocity.set(-0.2f, 0);
 		Body body = world.createBody(bdef);
 
 		shape.setAsBox(14 / PPM, 28 / PPM);
 		fdef.shape = shape;
-		body.createFixture(fdef).setUserData("zombie");
+		body.createFixture(fdef).setUserData("left_zombie");
 
 		// create player
 		rick =new Zombie(body);

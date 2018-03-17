@@ -55,10 +55,13 @@ public class Game implements ApplicationListener {
 		//res.loadTexture("res/images/background.png","backg");
         res.loadTexture("core/assets/images/background.png","backg");
 
+        res.loadTexture("core/assets/images/rickIDLE.png","zombie");
+
 		left=new TextureLoader();
 		//left.loadTexture("res/images/Steve_Walk_Left.png", "left");
         left.loadTexture("core/assets/images/Steve_Walk_Left.png", "left");
-		
+        left.loadTexture("core/assets/images/rick_Walk_Left.png", "left_zombie");
+
 		sb = new SpriteBatch();
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);

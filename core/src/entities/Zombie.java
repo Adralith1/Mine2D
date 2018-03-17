@@ -20,7 +20,7 @@ public class Zombie extends Entity {
         left=new Texture("core/assets/images/rick_Walk_Left.png") ;
         idle=new Texture("core/assets/images/rickIDLE.png");
 
-        leftReg = TextureRegion.split(left, 53, 65)[0];
+        leftReg = TextureRegion.split(left, 62, 103)[0];
         idleReg=TextureRegion.split(idle,52,62)[0];
 
         setAnimation(idleReg, 1 / 6f); // par défaut (au début le personnage est IDLE
