@@ -97,7 +97,7 @@ public class Play extends Stage {
 		{
 			if(cl.isPlayerOnGround() && !Inputs.isDown(3))
 			{
-				steve.getBody().applyForceToCenter(50,0,true);
+				steve.getBody().applyForceToCenter(25,0,true);
 				steve.setAnimation(steve.rightReg,1/6f);
 			}
 		}
@@ -105,11 +105,10 @@ public class Play extends Stage {
 		{
 			if(cl.isPlayerOnGround() && !Inputs.isDown(2))
 			{
-				steve.getBody().applyForceToCenter(-50,0,true);
+				steve.getBody().applyForceToCenter(-25,0,true);
 				steve.setAnimation(steve.leftReg,1/6f);
 			}
 		}
-		
 	}
 
 
@@ -195,7 +194,15 @@ public class Play extends Stage {
 		{
 			background.get(i).render(sb);
 		}
-		steve.render(sb);
+
+        if(steve.body.getLinearVelocity().x == 0)
+        {
+            steve.centerOnBlocRender(sb); // si steeve est immobile, on le centre
+        }
+        else {
+            steve.render(sb);
+        }
+
 		rick.render(sb);
 
 		for(int i=0;i<allBlocs.size;i++)
@@ -271,7 +278,7 @@ public class Play extends Stage {
 
 	private void createTiles() { // Récupération du fichier.tmx
 		//tileMap = new TmxMapLoader().load("res/maps/testObject.tmx");
-        tileMap = new TmxMapLoader().load("core/assets/maps/testObject.tmx");
+        tileMap = new TmxMapLoader().load("maps/testObject.tmx");
 		tmr = new OrthogonalTiledMapRenderer(tileMap);
 		tileSize = 25;
 

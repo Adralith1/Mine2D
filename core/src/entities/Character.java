@@ -22,11 +22,11 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu,
 		this.body = body;
 		animation = new Animation();
 		//right = new Texture("res/images/Steve_Walk.png"); // chargement des textures....
-        right = new Texture("core/assets/images/Steve_Walk.png"); // chargement des textures...
+        right = new Texture("images/Steve_Walk.png"); // chargement des textures...
 		//left=new Texture("res/images/Steve_Walk_Left.png") ;
-        left=new Texture("core/assets/images/Steve_Walk_Left.png") ;
+        left=new Texture("images/Steve_Walk_Left.png") ;
 		//idle=new Texture("res/images/SteveIDLE.png");
-        idle=new Texture("core/assets/images/SteveIDLE.png");
+        idle=new Texture("images/SteveIDLE.png");
 
 		leftReg = TextureRegion.split(left, 32, 62)[0]; /// 32 et 62 sont les dimensions des sprites du perso
 		rightReg= TextureRegion.split(right,32,62)[0];
@@ -56,6 +56,33 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu,
 			body.getPosition().y * Constantes.PPM - height / 2
 		);
 		sb.end();
+	}
+
+	// quand immobile, centre le personnage
+	public void centerOnBlocRender(SpriteBatch sb) {
+
+		// debug
+		//float currentPosition = (this.getPosition().x * Constantes.PPM) - (height / 2); // position actuelle de steeve
+		//float currentPositionX = this.getPosition().x;
+
+		// calcul du nouveau x
+		float center = 8; // centre d'un bloc par rapport à steeve et où sa référence est prise (essayez à x=8, centre sur le premier bloc)
+		int blocNum = (int) ((this.getPosition().x * Constantes.PPM) / 32) + 1; // numero du bloc où se situe steeve (à partir de 1)
+		float newX = center * blocNum; // TODO
+
+
+		sb.begin();
+		sb.draw(
+				animation.getFrame(),
+				newX,
+				body.getPosition().y * Constantes.PPM - height / 2
+		);
+		sb.end();
+
+		System.out.print("Centre d'un bloc : " + center + "\n");
+		System.out.println("Steeve est sur le bloc numéro : " + blocNum + "\n");
+		//System.out.print("Ancienne position : " + currentPosition + " ou " + currentPositionX +"\n");
+		System.out.print("Nouvelle position : " + newX + "\n");
 	}
 	
 	public Body getBody() { return body; }
