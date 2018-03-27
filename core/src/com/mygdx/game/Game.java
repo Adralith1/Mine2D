@@ -47,22 +47,22 @@ public class Game implements ApplicationListener {
 		//suite d'association chemin / clé
 		res = new TextureLoader();
 		//res.loadTexture("res/images/Steve_Walk.png", "steve");
-        res.loadTexture("core/assets/images/Steve_Walk.png", "steve");
+        res.loadTexture("images/Steve_Walk.png", "steve");
 		//res.loadTexture("res/images/dirtBloc.png","dirtb");
-        res.loadTexture("core/assets/images/dirtBloc.png","dirtb");
+        res.loadTexture("images/dirtBloc.png","dirtb");
 		//res.loadTexture("res/images/stoneBloc.png","stoneb");
-        res.loadTexture("core/assets/images/stoneBloc.png","stoneb");
+        res.loadTexture("images/stoneBloc.png","stoneb");
 		//res.loadTexture("res/images/videBloc.png","videb");
-        res.loadTexture("core/assets/images/videBloc.png","videb");
+        res.loadTexture("images/videBloc.png","videb");
 		//res.loadTexture("res/images/background.png","backg");
-        res.loadTexture("core/assets/images/background.png","backg");
+        res.loadTexture("images/background.png","backg");
 
-        res.loadTexture("core/assets/images/rickIDLE.png","zombie");
+        res.loadTexture("images/rickIDLE.png","zombie");
 
 		left=new TextureLoader();
 		//left.loadTexture("res/images/Steve_Walk_Left.png", "left");
-        left.loadTexture("core/assets/images/Steve_Walk_Left.png", "left");
-        left.loadTexture("core/assets/images/rick_Walk_Left.png", "left_zombie");
+        left.loadTexture("images/Steve_Walk_Left.png", "left");
+        left.loadTexture("images/rick_Walk_Left.png", "left_zombie");
 
 		sb = new SpriteBatch();
 		cam = new OrthographicCamera();

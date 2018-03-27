@@ -3,6 +3,7 @@ package com.mygdx.game.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+import com.mygdx.game.Mine2D;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -45,6 +46,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener () {
-                return new Mine2D();
+                return (ApplicationListener) new Mine2D();
         }
 }

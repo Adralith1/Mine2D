@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="25" tileheight="25" infinite="0" nextobjectid="127">
  <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32" tilecount="8" columns="4">
-  <image source="Blocs.png" width="150" height="75"/>
+  <image source="Blocs.PNG" width="150" height="75"/>
  </tileset>
  <tileset firstgid="9" source="Blocs.tsx"/>
  <tileset firstgid="27" source="background.tsx"/>

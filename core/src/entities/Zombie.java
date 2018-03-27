@@ -17,8 +17,8 @@ public class Zombie extends Entity {
         super(body);
         this.body = body;
         animation = new Animation();
-        left=new Texture("core/assets/images/rick_Walk_Left.png") ;
-        idle=new Texture("core/assets/images/rickIDLE.png");
+        left=new Texture("images/rick_Walk_Left.png") ;
+        idle=new Texture("images/rickIDLE.png");
 
         leftReg = TextureRegion.split(left, 62, 103)[0];
         idleReg=TextureRegion.split(idle,52,62)[0];
