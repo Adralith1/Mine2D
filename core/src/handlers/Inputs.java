@@ -1,5 +1,7 @@
 package handlers;
 
+import com.badlogic.gdx.math.Vector2;
+
 /**
  * Flo sur fB :
  * Inputs : Si vous avez une commande à rajouter, ajoutez le dans cette classe,
@@ -15,14 +17,20 @@ public class Inputs {
 
 
 
-	public static final int NUM_KEYS = 6;
+	public static final int NUM_KEYS = 9;
 	public static final int BUTTON1 = 0;
 	public static final int BUTTON2 = 1;
 	public static final int DROITE=2;
 	public static final int GAUCHE=3;
 	public static final int DESTROY=4;
 	public static final int BUILD=5;
-	
+
+	public static final int MOUSE_LEFT=7;
+	public static final int MOUSE_RIGHT=8;
+	public static final int MOUSE_CENTER=9;
+
+	public static Vector2 mouseLocation;
+
 	static {
 		keys = new boolean[NUM_KEYS];
 		pkeys = new boolean[NUM_KEYS];
