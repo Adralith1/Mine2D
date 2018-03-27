@@ -38,7 +38,9 @@ public class CollisionHandler implements ContactListener {
 		}
 
 		//on vérifie la collision entre fa et fb, mais on ne sait pas qui est qui ? Et on fait attention de l'ajouter qu'une seule fois, sinon erreur
-		if(fa.getUserData() != null && fa.getUserData().equals("dirt") && !blocToDelete.contains(fa.getBody(),true)) {
+		// delete les null + mettre des objet (si possible) plutot que par chaine
+        // pour le mettre dans l'user data
+        if(fa.getUserData() != null && fa.getUserData().equals("dirt") && !blocToDelete.contains(fa.getBody(),true)) {
 			blocToDelete.add(fa.getBody());
 		}
 		if(fb.getUserData() != null && fb.getUserData().equals("dirt") && !blocToDelete.contains(fb.getBody(),true)) {
@@ -50,7 +52,16 @@ public class CollisionHandler implements ContactListener {
 		if(fb.getUserData() != null && fb.getUserData().equals("stone") && !blocToDelete.contains(fb.getBody(),true)) {
 			blocToDelete.add(fb.getBody());
 		}
-		
+
+		if(fa.getUserData().equals("player") && fb.getUserData().equals("zombie") || fb.getUserData().equals("player") && fa.getUserData().equals("zombie")) {
+            System.out.println("dead Player");
+            //fa.getShape().dispose();
+			//return;
+        }
+
+        if(fa.getUserData().equals("foot") && fb.getUserData().equals("zombie") || fb.getUserData().equals("foot") && fa.getUserData().equals("zombie")) {
+            System.out.println("dead Zombie");
+        }
 	}
 
 	// provient de box2D, c'est une fonction automatiquement appelé lors de la fin d'un contact entre deux objet

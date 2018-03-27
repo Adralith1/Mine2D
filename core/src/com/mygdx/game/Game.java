@@ -42,6 +42,8 @@ public class Game implements ApplicationListener {
 		//Texture.setEnforcePotImages(false);
 		Gdx.input.setInputProcessor(new InputsHandlers());
 
+		Inputs.setKey(Inputs.MOUSE_LEFT,false);
+
 		//suite d'association chemin / clé
 		res = new TextureLoader();
 		//res.loadTexture("res/images/Steve_Walk.png", "steve");

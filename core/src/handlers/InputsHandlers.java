@@ -65,5 +65,35 @@ public class InputsHandlers extends InputAdapter implements InputProcessor{
 		}
 		return true;
 	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		if(button == 0){
+			Inputs.setKey(Inputs.MOUSE_LEFT,true);
+		}else if(button == 1){
+			Inputs.setKey(Inputs.MOUSE_RIGHT,true);
+		}else if(button == 2){
+			Inputs.setKey(Inputs.MOUSE_CENTER,true);
+		}
+		//Inputs.mouseLocation.x = screenX;
+		//Inputs.mouseLocation.y = screenY;
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		if(button == 0){
+			Inputs.setKey(Inputs.MOUSE_LEFT,false);
+		}else if(button == 1){
+			Inputs.setKey(Inputs.MOUSE_RIGHT,false);
+		}else if(button == 2){
+			Inputs.setKey(Inputs.MOUSE_CENTER,false);
+		}
+		//Inputs.mouseLocation.x = screenX;
+		//Inputs.mouseLocation.y = screenY;
+		return false;
+	}
+
+
 	
 }

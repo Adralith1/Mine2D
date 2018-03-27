@@ -36,6 +36,8 @@ import handlers.Inputs;
 import entities.Character;
 import entities.Zombie;
 
+import java.util.List;
+
 
 /**
  * Flo sur FB : Play : TU PASSERAS FORCEMENT PAR LA
@@ -108,6 +110,13 @@ public class Play extends Stage {
 				steve.getBody().applyForceToCenter(-25,0,true);
 				steve.setAnimation(steve.leftReg,1/6f);
 			}
+		}
+
+		if(Inputs.isPressed(Inputs.MOUSE_LEFT)) {
+			System.out.println("Clique gauche !");
+            if (rick.getBody().getFixtureList().size > 0) {
+                rick.dispose();
+            }
 		}
 	}
 
@@ -217,7 +226,8 @@ public class Play extends Stage {
 		
 	}
 	
-	public void dispose() {}
+	public void dispose() {
+    }
 
 	/**
 	 * Ci-dessus les methodes qui servent à définir les entites, tu peux les voirs comme un "new"
@@ -268,7 +278,7 @@ public class Play extends Stage {
 
 		shape.setAsBox(14 / PPM, 28 / PPM);
 		fdef.shape = shape;
-		body.createFixture(fdef).setUserData("left_zombie");
+		body.createFixture(fdef).setUserData("zombie");
 
 		// create player
 		rick =new Zombie(body);
