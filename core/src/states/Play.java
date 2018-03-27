@@ -114,7 +114,9 @@ public class Play extends Stage {
 
 		if(Inputs.isPressed(Inputs.MOUSE_LEFT)) {
 			System.out.println("Clique gauche !");
-			rick.dispose();
+            if (rick.getBody().getFixtureList().size > 0) {
+                rick.dispose();
+            }
 		}
 		
 	}
