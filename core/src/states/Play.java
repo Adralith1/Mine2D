@@ -36,6 +36,8 @@ import handlers.Inputs;
 import entities.Character;
 import entities.Zombie;
 
+import java.util.List;
+
 
 /**
  * Flo sur FB : Play : TU PASSERAS FORCEMENT PAR LA
@@ -111,7 +113,7 @@ public class Play extends Stage {
 		}
 
 		if(Inputs.isPressed(Inputs.MOUSE_LEFT)) {
-			System.out.println("Cliquez bande de salope !");
+			System.out.println("Clique gauche !");
 			rick.dispose();
 		}
 		
