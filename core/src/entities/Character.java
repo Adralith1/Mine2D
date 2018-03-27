@@ -61,15 +61,11 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu,
 	// quand immobile, centre le personnage
 	public void centerOnBlocRender(SpriteBatch sb) {
 
-		// debug
-		//float currentPosition = (this.getPosition().x * Constantes.PPM) - (height / 2); // position actuelle de steeve
-		//float currentPositionX = this.getPosition().x;
+		int blocWidth = 25;
 
 		// calcul du nouveau x
-		float center = 8; // centre d'un bloc par rapport à steeve et où sa référence est prise (essayez à x=8, centre sur le premier bloc)
-		int blocNum = (int) ((this.getPosition().x * Constantes.PPM) / 32) + 1; // numero du bloc où se situe steeve (à partir de 1)
-		float newX = center * blocNum; // TODO
-
+		int blocNum = (int) ((this.getPosition().x * Constantes.PPM) / blocWidth) + 1; // numero du bloc où se situe steeve (à partir de 1)
+		float newX = (float) ((blocWidth * blocNum) - 15); // -15 car la référence de steeve n'est pas son milieu (-blocWidth / 2 normalement)
 
 		sb.begin();
 		sb.draw(
@@ -79,10 +75,6 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu,
 		);
 		sb.end();
 
-		System.out.print("Centre d'un bloc : " + center + "\n");
-		System.out.println("Steeve est sur le bloc numéro : " + blocNum + "\n");
-		//System.out.print("Ancienne position : " + currentPosition + " ou " + currentPositionX +"\n");
-		System.out.print("Nouvelle position : " + newX + "\n");
 	}
 	
 	public Body getBody() { return body; }
