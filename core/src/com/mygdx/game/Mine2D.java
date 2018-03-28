@@ -11,8 +11,12 @@ public class Mine2D {
 		LwjglApplicationConfiguration cfg =
 			new LwjglApplicationConfiguration();
 		cfg.title = Game.TITLE;
-		cfg.width = Game.GAME_WIDTH * Game.SCALE;
-		cfg.height = Game.GAME_HEIGHT * Game.SCALE;
+		// cfg.width = Game.GAME_WIDTH * Game.SCALE;
+		// cfg.height = Game.GAME_HEIGHT * Game.SCALE;
+
+        cfg.width = 320 * 3;
+        cfg.height = 240 * 3;
+
 		new LwjglApplication(new Game(), cfg);
 	}
 }

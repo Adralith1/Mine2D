@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import handlers.Inputs;
 import handlers.InputsHandlers;
 import handlers.TextureLoader;
@@ -21,14 +22,21 @@ public class Game implements ApplicationListener {
 	public static final String TITLE = "MINE2D";
 	public static final int GAME_WIDTH = 320; //résolution de la fenêtre en largeur
 	public static final int GAME_HEIGHT = 240; // en hauteur
-	public static final int SCALE = 3; // échelle de résolution
+
+	public static final float SCALE = 32f; // échelle de résolution
+
+    public final static float INV_SCALE = 1.f/SCALE;
+    // this is our "target" resolution, not that the window can be any size, it is not bound to this one
+    public final static float VP_WIDTH = (GAME_WIDTH * 3) * INV_SCALE;
+    public final static float VP_HEIGHT = (GAME_HEIGHT * 3) * INV_SCALE;
 
 	
 	public static final float STEP = 1 / 60f; // Nécessaire au calcul des frames
 	private float accum;
 	
 	private SpriteBatch sb;
-	private OrthographicCamera cam;
+	public static OrthographicCamera cam;
+	private ExtendViewport viewport;
 	
 	private Play play;
 	
@@ -67,6 +75,9 @@ public class Game implements ApplicationListener {
 		sb = new SpriteBatch();
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
+
+        viewport = new ExtendViewport(VP_WIDTH, VP_HEIGHT, cam);
+
 		play = new Play(this);
 	}
 
@@ -89,7 +100,7 @@ public class Game implements ApplicationListener {
 	public SpriteBatch getSpriteBatch() { return sb; }
 	public OrthographicCamera getCamera() { return cam; }
 	
-	public void resize(int w, int h) {}
+	public void resize(int w, int h) {  }
 	public void pause() {}
 	public void resume() {}
 	

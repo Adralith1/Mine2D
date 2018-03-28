@@ -1,6 +1,7 @@
 package states;
 
 
+import static com.mygdx.game.Game.*;
 import static handlers.Constantes.PPM;
 
 import com.badlogic.gdx.Gdx;
@@ -21,6 +22,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -113,9 +115,31 @@ public class Play extends Stage {
 		}
 
 		if(Inputs.isPressed(Inputs.MOUSE_LEFT)) {
-			System.out.println("Clique gauche !");
+			
+			float mouseX = Inputs.mouseLocation.x * INV_SCALE * 10;
+			float mouseY = Inputs.mouseLocation.y * INV_SCALE * 10;
+
+			float rickX = rick.getBody().getPosition().x * SCALE;
+			float rickY = rick.getBody().getPosition().y * SCALE;
+
+            //System.out.println("\n Mouse x : " + mouseX + " | " + rickX + " : Zombie x \n");
+            //System.out.println("Mouse y : " + mouseY + " | " + rickY + " : Zombie y \n");
+
+			float steveX = steve.getBody().getPosition().x * SCALE;
+			float steveY = steve.getBody().getPosition().y * SCALE;
+
+			// System.out.println("steve x : " + steveX + " | " + rickX + " : Zombie x \n");
+			// System.out.println("steve y : " + steveY + " | " + rickY + " : Zombie y \n");
+
             if (rick.getBody().getFixtureList().size > 0) {
-                rick.dispose();
+				if(rickX-7 < mouseX && mouseX < rickX+7) {
+					if (rickY-12 < mouseY && mouseY < rickY+7) {
+						if (rickY + 12 > steveY && rickY - 12 < steveY && rickX + 20 > steveX && rickX - 20 < steveX) {
+							rick.dispose();
+							// System.out.println("true");
+						}
+					}
+				}
             }
 		}
 		

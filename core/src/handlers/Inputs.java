@@ -1,6 +1,9 @@
 package handlers;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+
+import static handlers.Constantes.PPM;
 
 /**
  * Flo sur fB :
@@ -29,7 +32,7 @@ public class Inputs {
 	public static final int MOUSE_RIGHT=8;
 	public static final int MOUSE_CENTER=9;
 
-	public static Vector2 mouseLocation;
+	public static Vector3 mouseLocation = new Vector3();
 
 	static {
 		keys = new boolean[NUM_KEYS];
