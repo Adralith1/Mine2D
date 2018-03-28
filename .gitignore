@@ -49,4 +49,5 @@ nbactions.xml
 nb-configuration.xml
 
 
-
+## Benjamin,répertoire de compilation
+core/out/

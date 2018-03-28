@@ -12,7 +12,9 @@ import handlers.Constantes;
 import java.util.HashMap;
 
 public class Character extends Entity{ // Entity défini TOUT objet dans le jeu, ici on définit notre personnage
-	
+
+    public static int steeveWidth = 25; // tailles que l'on veut donner à Steeve
+    public static int steeveHeight = 62;
 
 	public Texture left,right,idle; //le personnage a trois différentes manières d'exister
 	public TextureRegion[] leftReg,rightReg,idleReg; // donc ses textures aussi
@@ -22,15 +24,15 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu,
 		this.body = body;
 		animation = new Animation();
 		//right = new Texture("res/images/Steve_Walk.png"); // chargement des textures....
-        right = new Texture("core/assets/images/Steve_Walk.png"); // chargement des textures...
+        right = new Texture("images/Steve_Walk.png"); // chargement des textures...
 		//left=new Texture("res/images/Steve_Walk_Left.png") ;
-        left=new Texture("core/assets/images/Steve_Walk_Left.png") ;
+        left=new Texture("images/Steve_Walk_Left.png") ;
 		//idle=new Texture("res/images/SteveIDLE.png");
-        idle=new Texture("core/assets/images/SteveIDLE.png");
+        idle=new Texture("images/SteveIDLE.png");
 
-		leftReg = TextureRegion.split(left, 32, 62)[0]; /// 32 et 62 sont les dimensions des sprites du perso
-		rightReg= TextureRegion.split(right,32,62)[0];
-		idleReg=TextureRegion.split(idle,32,62)[0];
+		leftReg = TextureRegion.split(left, 32, steeveHeight)[0]; /// 32 et 62 sont les dimensions des sprites du perso
+		rightReg= TextureRegion.split(right,32,steeveHeight)[0];
+		idleReg=TextureRegion.split(idle,32,steeveHeight)[0];
 
 		setAnimation(idleReg, 1 / 6f); // par défaut (au début le personnage est IDLE
 	}
@@ -53,9 +55,33 @@ public class Character extends Entity{ // Entity défini TOUT objet dans le jeu,
 		sb.draw(
 			animation.getFrame(),
 			body.getPosition().x * Constantes.PPM - width / 2,
-			body.getPosition().y * Constantes.PPM - height / 2
+			body.getPosition().y * Constantes.PPM - height / 2,
+                steeveWidth,
+                steeveHeight
 		);
 		sb.end();
+	}
+
+	// quand immobile, centre le personnage
+	public void centerOnBlocRender(SpriteBatch sb) {
+
+		int blocWidth = 25;
+
+		// calcul du nouveau x
+		int blocNum = (int) ((this.getPosition().x * Constantes.PPM) / blocWidth) + 1; // numero du bloc où se situe steeve (à partir de 1)
+		float newX = (float) ((blocWidth * blocNum) - 12.5);
+
+		sb.begin();
+		sb.draw(
+				animation.getFrame(),
+				newX,
+				body.getPosition().y * Constantes.PPM - height / 2,
+                steeveWidth,
+                steeveHeight
+
+		);
+		sb.end();
+
 	}
 	
 	public Body getBody() { return body; }

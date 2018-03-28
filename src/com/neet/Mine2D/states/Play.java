@@ -1,13 +1,9 @@
-package states;
+package com.neet.Mine2D.states;
 
-
-import static com.mygdx.game.Game.*;
-import static handlers.Constantes.PPM;
+import static com.neet.Mine2D.handlers.Constantes.PPM;
 
 import com.badlogic.gdx.Gdx;
-//import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,39 +18,25 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-
+import com.neet.Mine2D.entities.*;
+import com.neet.Mine2D.entities.Character;
+import com.neet.Mine2D.handlers.*;
+import com.neet.Mine2D.main.Game;
 import com.badlogic.gdx.utils.Array;
-import com.mygdx.game.Game;
-import entities.BackGround;
-import entities.Bloc;
-import entities.DirtBloc;
-import entities.StoneBloc;
-import handlers.CollisionHandler;
-import handlers.Inputs;
-import entities.Character;
-import entities.Zombie;
-
-import java.util.List;
 
 
-/**
- * Flo sur FB : Play : TU PASSERAS FORCEMENT PAR LA
- c'est dans cette classe là que toutes les fonctions crées dans les autres classes sont utilisées,
- clairement quelquechose comme :
- 	public void build() serait dans cette classe
- 	public void crouch() serait à ajouter dans handleInput(),
- 	tout objet à créer se créer là et se render là également 🙂
- */
+
 public class Play extends Stage {
+
+
 	protected SpriteBatch sb;
 	protected OrthographicCamera cam;
 	protected Game game;
 	private boolean showBoxes = false;
-	private World world; //Ajoute un monde dans lequel sont les entites
+	private World world;
 	private Box2DDebugRenderer b2dr;
 	private OrthographicCamera b2dCam;
 	private CollisionHandler cl;
@@ -62,11 +44,8 @@ public class Play extends Stage {
 	private float tileSize;
 	private OrthogonalTiledMapRenderer tmr;
 	private Character steve;
-	private Zombie rick;
 	public Array<Bloc> allBlocs;
 	public Array<Bloc> background;
-
-	// Constructeur : ici on définit tous nos entites et notre monde dans lequel ils sont
 	public Play(Game game) {
 		sb = game.getSpriteBatch();
 		cam = game.getCamera();
@@ -75,7 +54,6 @@ public class Play extends Stage {
 		world.setContactListener(cl);
 		b2dr = new Box2DDebugRenderer();
 		createPlayer();
-		createZombie();
 		allBlocs=new Array<Bloc>();
 		background=new Array<Bloc>();
 
@@ -101,7 +79,7 @@ public class Play extends Stage {
 		{
 			if(cl.isPlayerOnGround() && !Inputs.isDown(3))
 			{
-				steve.getBody().applyForceToCenter(25,0,true);
+				steve.getBody().applyForceToCenter(50,0,true);
 				steve.setAnimation(steve.rightReg,1/6f);
 			}
 		}
@@ -109,39 +87,11 @@ public class Play extends Stage {
 		{
 			if(cl.isPlayerOnGround() && !Inputs.isDown(2))
 			{
-				steve.getBody().applyForceToCenter(-25,0,true);
+				steve.getBody().applyForceToCenter(-50,0,true);
 				steve.setAnimation(steve.leftReg,1/6f);
 			}
 		}
-
-		if(Inputs.isPressed(Inputs.MOUSE_LEFT)) {
-			
-			float mouseX = Inputs.mouseLocation.x * INV_SCALE * 10;
-			float mouseY = Inputs.mouseLocation.y * INV_SCALE * 10;
-
-			float rickX = rick.getBody().getPosition().x * SCALE;
-			float rickY = rick.getBody().getPosition().y * SCALE;
-
-            //System.out.println("\n Mouse x : " + mouseX + " | " + rickX + " : Zombie x \n");
-            //System.out.println("Mouse y : " + mouseY + " | " + rickY + " : Zombie y \n");
-
-			float steveX = steve.getBody().getPosition().x * SCALE;
-			float steveY = steve.getBody().getPosition().y * SCALE;
-
-			// System.out.println("steve x : " + steveX + " | " + rickX + " : Zombie x \n");
-			// System.out.println("steve y : " + steveY + " | " + rickY + " : Zombie y \n");
-
-            if (rick.getBody().getFixtureList().size > 0) {
-				if(rickX-7 < mouseX && mouseX < rickX+7) {
-					if (rickY-12 < mouseY && mouseY < rickY+7) {
-						if (rickY + 12 > steveY && rickY - 12 < steveY && rickX + 20 > steveX && rickX - 20 < steveX) {
-							rick.dispose();
-							// System.out.println("true");
-						}
-					}
-				}
-            }
-		}
+		
 	}
 
 
@@ -171,16 +121,11 @@ public class Play extends Stage {
 			}
 		}
 	}
-
-	public void handleZombie() {
-		rick.setAnimation(rick.leftReg,1/6f);
-	}
 	
 	public void update(float dt) { // Sert à prendre le nouvel état de chaque élément
 		
 		handleInput();
 		handleBuilding();
-		handleZombie();
 		world.step(dt, 6, 2);
 		if (Inputs.isPressed(Inputs.DESTROY)) {
 			Array<Body> bodies = cl.getBlocToDelete();
@@ -196,7 +141,6 @@ public class Play extends Stage {
 			steve.setAnimation(steve.idleReg,1/6f);
 		}
 		steve.update(dt);
-		rick.update(dt);
 
 		for(int i = 0; i < allBlocs.size; i++) {
 			allBlocs.get(i).update(dt);
@@ -210,8 +154,7 @@ public class Play extends Stage {
 
 		// clear screen
 
-		//Gdx.gl10.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl10.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
 
 		//sb.draw(background,0,0, game.GAME_WIDTH,game.GAME_HEIGHT);
@@ -227,16 +170,7 @@ public class Play extends Stage {
 		{
 			background.get(i).render(sb);
 		}
-
-        if(steve.body.getLinearVelocity().x == 0)
-        {
-            steve.centerOnBlocRender(sb); // si steeve est immobile, on le centre
-        }
-        else {
-            steve.render(sb);
-        }
-
-		rick.render(sb);
+		steve.render(sb);
 
 		for(int i=0;i<allBlocs.size;i++)
 		{
@@ -250,15 +184,7 @@ public class Play extends Stage {
 		
 	}
 	
-	public void dispose() {
-    }
-
-	/**
-	 * Ci-dessus les methodes qui servent à définir les entites, tu peux les voirs comme un "new"
-	 * genre l'ajout d'un bloc dans le constructeur Play ne se fera pas
-	 * Bloc dirt = new Bloc(param) mais s'écrit ici createBloc(param)
-	 * Et c'est pareille avec chaque entites
-	 */
+	public void dispose() {}
 	
 	private void createPlayer() { // Création du personnage et de sa hitbox
 		
@@ -287,32 +213,9 @@ public class Play extends Stage {
 		body.setUserData(steve);
 		
 	}
-
-	private void createZombie() { // Création du zombie et de sa hitbox
-
-		BodyDef bdef = new BodyDef();
-		FixtureDef fdef = new FixtureDef();
-		PolygonShape shape = new PolygonShape();
-
-		// create player
-		bdef.position.set(480 / PPM, 430 / PPM);
-		bdef.type = BodyType.DynamicBody;
-		bdef.linearVelocity.set(-0.2f, 0);
-		Body body = world.createBody(bdef);
-
-		shape.setAsBox(14 / PPM, 28 / PPM);
-		fdef.shape = shape;
-		body.createFixture(fdef).setUserData("zombie");
-
-		// create player
-		rick =new Zombie(body);
-		body.setUserData(rick);
-
-	}
-
+	
 	private void createTiles() { // Récupération du fichier.tmx
-		//tileMap = new TmxMapLoader().load("res/maps/testObject.tmx");
-        tileMap = new TmxMapLoader().load("maps/testObject.tmx");
+		tileMap = new TmxMapLoader().load("res/maps/testObject.tmx");
 		tmr = new OrthogonalTiledMapRenderer(tileMap);
 		tileSize = 25;
 
@@ -341,8 +244,8 @@ public class Play extends Stage {
 		FixtureDef fdef = new FixtureDef();
 		for(MapObject mo : layer.getObjects()) {
 			bdef.type = BodyType.StaticBody;
-			float x =  (mo.getProperties().get("x", Float.class)) / PPM;
-			float y = (mo.getProperties().get("y", Float.class)) / PPM;
+			float x = (float) mo.getProperties().get("x") / PPM;
+			float y = (float) mo.getProperties().get("y") / PPM;
 			ChainShape cs = new ChainShape();
 			Vector2[] v = new Vector2[3];
 			v[0] = new Vector2(
@@ -373,8 +276,8 @@ public class Play extends Stage {
 		FixtureDef fdef = new FixtureDef();
 		for(MapObject mo : layer.getObjects()) {
 			bdef.type = BodyType.StaticBody;
-			float x = mo.getProperties().get("x" , Float.class) / PPM;
-			float y =  mo.getProperties().get("y" , Float.class) / PPM;
+			float x = (float) mo.getProperties().get("x") / PPM;
+			float y = (float) mo.getProperties().get("y") / PPM;
 			ChainShape cs = new ChainShape();
 			Vector2[] v = new Vector2[5];
 			v[0] = new Vector2(

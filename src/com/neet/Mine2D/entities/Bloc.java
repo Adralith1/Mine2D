@@ -1,43 +1,32 @@
-package entities;
+package com.neet.Mine2D.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import handlers.Animation;
-import handlers.Constantes;
+import com.neet.Mine2D.handlers.Animation;
+import com.neet.Mine2D.handlers.Constantes;
 
-public class Zombie extends Entity {
 
-    public Texture left,right,idle; //le personnage a trois différentes manières d'exister
-    public TextureRegion[] leftReg,rightReg,idleReg; // donc ses textures aussi
+public class Bloc extends Entity{ //va être la "mère" de tous les blocs qui auront le même comportement
 
-    public Zombie(Body body) {
+    public Bloc(Body body) // utilise le constructeur du super car possède les mêmes attributs
+    {
         super(body);
         this.body = body;
-        animation = new Animation();
-        left=new Texture("images/rick_Walk_Left.png") ;
-        idle=new Texture("images/rickIDLE.png");
-
-        leftReg = TextureRegion.split(left, 62, 103)[0];
-        idleReg=TextureRegion.split(idle,52,62)[0];
-
-        setAnimation(idleReg, 1 / 6f); // par défaut (au début le personnage est IDLE
+        animation=new Animation();
     }
 
-    // Définit les annimation
+    // l'animation sera un sprite immobile, mais inévitable si on souhaite gérer la map en objets
+    //et pas en tiles (les tiles rendent difficile la destruction de ces dernières
     public void setAnimation(TextureRegion[] reg, float delay) {
         animation.setFrames(reg, delay);
         width = reg[0].getRegionWidth();
         height = reg[0].getRegionHeight();
     }
 
-    public void update(float dt) {
-        animation.update(dt);
-    }
-
-    // Affiche le personnage
+    //sert simplement à dessiner le sprite correspondant
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(
@@ -47,12 +36,11 @@ public class Zombie extends Entity {
         );
         sb.end();
     }
+    public void update(float dt) {
+        animation.update(dt);
+    } // mettre à jour l'animation
 
-    public void dispose() {
-        body.resetMassData();
-        body.destroyFixture(body.getFixtureList().first());
-    }
-
+    //ci- dessous des get et set
     public Body getBody() { return body; }
     public Vector2 getPosition() { return body.getPosition(); }
     public float getWidth() { return width; }
